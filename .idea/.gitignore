@@ -1,0 +1,22 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Maven
+target/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Generated sources
+generated/
+
+# Java
+out/
+
+# Python
+venv/
+__pycache__/
