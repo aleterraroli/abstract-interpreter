@@ -3,7 +3,7 @@ grammar Abs;
 main : stmt* EOF ;
 
 stmt
-    : ID ASSIGN exp SC                    # assign
+    : ID ASSIGN exp SC                   # assign
     | IF LPAR exp RPAR stmt              # if
     | IF LPAR exp RPAR stmt ELSE stmt    # ifElse
     | WHILE LPAR exp RPAR stmt           # while
