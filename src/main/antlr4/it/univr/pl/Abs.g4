@@ -1,14 +1,14 @@
 grammar Abs;
 
-main : stmt* EOF ;
+main : com* EOF ;
 
-stmt
-    : ID ASSIGN exp SC                   # assign
-    | IF LPAR exp RPAR stmt              # if
-    | IF LPAR exp RPAR stmt ELSE stmt    # ifElse
-    | WHILE LPAR exp RPAR stmt           # while
-    | LBRACE stmt* RBRACE                # block
-    | OUT exp SC                         # print
+com
+    : ID ASSIGN exp SC                  # assign
+    | IF LPAR exp RPAR com              # if
+    | IF LPAR exp RPAR com ELSE com     # ifElse
+    | WHILE LPAR exp RPAR com           # while
+    | LBRACE com* RBRACE                # block
+    | OUT exp SC                        # print
     ;
 
 exp
