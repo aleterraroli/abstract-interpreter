@@ -21,14 +21,6 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
 
     private BoolValue visitBool(AbsParser.ExpContext ctx) {return (BoolValue) visit(ctx);}
 
-    private ExpValue<?> getDefaultValue(String type) {
-        return switch (type){
-            case "int" -> new IntValue(0);
-            case "bool" -> new BoolValue(false);
-            default -> null;
-        };
-    }
-
     @Override
 	public Value visitMain(AbsParser.MainContext ctx) {
         return visitChildren(ctx);
