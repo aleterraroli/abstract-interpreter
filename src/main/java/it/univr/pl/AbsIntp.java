@@ -13,13 +13,21 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
         return mem;
     }
 
-    public ComValue visitCom(AbsParser.ComContext ctx) {return (ComValue) visit(ctx);}
+    private ComValue visitCom(AbsParser.ComContext ctx) {return (ComValue) visit(ctx);}
 
-    public ExpValue<?> visitExp(AbsParser.ExpContext ctx) {return (ExpValue<?>) visit(ctx);}
+    private ExpValue<?> visitExp(AbsParser.ExpContext ctx) {return (ExpValue<?>) visit(ctx);}
 
-    public IntValue visitInt(AbsParser.ExpContext ctx) {return (IntValue) visit(ctx);}
+    private IntValue visitInt(AbsParser.ExpContext ctx) {return (IntValue) visit(ctx);}
 
-    public BoolValue visitBool(AbsParser.ExpContext ctx) {return (BoolValue) visit(ctx);}
+    private BoolValue visitBool(AbsParser.ExpContext ctx) {return (BoolValue) visit(ctx);}
+
+    private ExpValue<?> getDefaultValue(String type) {
+        return switch (type){
+            case "int" -> new IntValue(0);
+            case "bool" -> new BoolValue(false);
+            default -> null;
+        };
+    }
 
     @Override
 	public Value visitMain(AbsParser.MainContext ctx) {
