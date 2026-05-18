@@ -1,4 +1,5 @@
 package it.univr.pl.value;
 
-public class IntValue {
+public class IntValue extends ExpValue<Integer> {
+    public IntValue(Integer value) {super(value);}
 }

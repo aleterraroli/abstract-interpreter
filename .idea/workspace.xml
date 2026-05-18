@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="" />
+    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/value/IntValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,6 +108,8 @@
       <workItem from="1779117857890" duration="33000" />
       <workItem from="1779117902983" duration="2000" />
       <workItem from="1779117910834" duration="78000" />
+      <workItem from="1779118122889" duration="135000" />
+      <workItem from="1779118276696" duration="45000" />
     </task>
     <servers />
   </component>
