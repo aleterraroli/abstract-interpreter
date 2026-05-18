@@ -1,9 +1,6 @@
 package it.univr.pl;
 
-import it.univr.pl.value.ComValue;
-import it.univr.pl.value.ExpValue;
-import it.univr.pl.value.IntValue;
-import it.univr.pl.value.Value;
+import it.univr.pl.value.*;
 
 public class AbsIntp extends AbsBaseVisitor<Value> {
     private final Mem mem;
@@ -20,7 +17,9 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
 
     public ExpValue<?> visitExp(AbsParser.ExpContext ctx) {return (ExpValue<?>) visit(ctx);}
 
-    public IntValue visitInt(AbsParser.ExpContext ctx) { return (IntValue) visit(ctx);}
+    public IntValue visitInt(AbsParser.ExpContext ctx) {return (IntValue) visit(ctx);}
+
+    public BoolValue visitBool(AbsParser.ExpContext ctx) {return (BoolValue) visit(ctx);}
 
     @Override
 	public Value visitMain(AbsParser.MainContext ctx) {
