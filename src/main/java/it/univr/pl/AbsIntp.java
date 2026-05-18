@@ -1,5 +1,6 @@
 package it.univr.pl;
 
+import it.univr.pl.value.ComValue;
 import it.univr.pl.value.Value;
 
 public class AbsIntp extends AbsBaseVisitor<Value> {
@@ -12,6 +13,8 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
     public Mem getMem() {
         return mem;
     }
+
+    public ComValue visitCom(AbsParser.ComContext ctx) {return (ComValue) visit(ctx);}
 
     @Override
 	public Value visitMain(AbsParser.MainContext ctx) {
