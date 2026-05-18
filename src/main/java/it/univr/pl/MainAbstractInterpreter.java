@@ -16,6 +16,8 @@ public class MainAbstractInterpreter {
         AbsParser parser = new AbsParser(tokens);
         ParseTree tree = parser.main();
         System.out.println(tree.toStringTree(parser));
+        AbsIntp interpreter = new AbsIntp();
+        interpreter.visit(tree);
 
     }
 }
