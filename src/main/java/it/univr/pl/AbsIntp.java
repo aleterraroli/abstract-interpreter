@@ -134,4 +134,22 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
         assert result != null; // always true
         return new IntValue((int) result.doubleValue());
     }
+
+    @Override
+    public ExpValue<?> visitAddSub(AbsParser.AddSubContext ctx) {
+        IntValue left = visitIntExp(ctx.exp(0));
+        IntValue right = visitIntExp(ctx.exp(1));
+        SimpleType leftType = (SimpleType) TypeUtils.fromValue(left);
+        SimpleType rightType = (SimpleType) TypeUtils.fromValue(right);
+
+        Double result;
+        switch (ctx.op.getType()) {
+            case AbsParser.ADD -> result = unwrapToDouble(left) + unwrapToDouble(right);
+            case AbsParser.SUB -> result = unwrapToDouble(left) - unwrapToDouble(right);
+            default -> result = null; // unreachable code
+        }
+
+        assert result != null; // always true
+        return new IntValue((int) result.doubleValue());
+    }
 }
