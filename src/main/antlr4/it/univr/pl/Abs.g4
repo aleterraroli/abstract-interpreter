@@ -1,6 +1,6 @@
 grammar Abs;
 
-main : com EOF ;
+main : com+ EOF ;
 
 com : TYPE ID (ASSIGN exp)?             # decl
     | ID ASSIGN exp SC                  # assign
