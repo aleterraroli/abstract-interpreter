@@ -8,4 +8,9 @@ public enum SimpleType implements ExpType {
 
     @Override
     public String getName() {return name;}
+
+    @Override
+    public boolean isCompatible(Type other) {
+        return this == other;
+    }
 }
