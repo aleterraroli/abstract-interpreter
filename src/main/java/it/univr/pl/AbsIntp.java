@@ -170,5 +170,17 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
         return mem.getValue(id);
     }
 
+    @Override
+    public BoolValue visitCmpExp(AbsParser.CmpExpContext ctx) {
+        IntValue left = visitIntExp(ctx.exp(0));
+        IntValue right = visitIntExp(ctx.exp(1));
 
+        return switch (ctx.op.getType()) {
+            case AbsParser.GEQ -> new BoolValue(unwrapToDouble(left) >= unwrapToDouble(right));
+            case AbsParser.LEQ -> new BoolValue(unwrapToDouble(left) <= unwrapToDouble(right));
+            case AbsParser.LT -> new BoolValue(unwrapToDouble(left) < unwrapToDouble(right));
+            case AbsParser.GT -> new BoolValue(unwrapToDouble(left) > unwrapToDouble(right));
+            default -> null; // unreachable code
+        };
+    }
 }
