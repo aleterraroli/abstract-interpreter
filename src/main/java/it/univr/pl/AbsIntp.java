@@ -139,8 +139,6 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
     public ExpValue<?> visitAddSub(AbsParser.AddSubContext ctx) {
         IntValue left = visitIntExp(ctx.exp(0));
         IntValue right = visitIntExp(ctx.exp(1));
-        SimpleType leftType = (SimpleType) TypeUtils.fromValue(left);
-        SimpleType rightType = (SimpleType) TypeUtils.fromValue(right);
 
         Double result;
         switch (ctx.op.getType()) {

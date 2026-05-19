@@ -18,7 +18,8 @@ exp : INT                                # intVal
     | NOT exp                            # not
     | exp op=(MUL | DIV) exp             # mulDiv
     | exp op=(ADD | SUB) exp             # addSub
-    | exp op=(LT | GT | EQQ) exp         # compare
+    | exp op=(LT | LEQ | GEQ | GT) exp   # cmpExp
+    | exp op=(EQQ | NEQ) exp             # eqExp
     | exp op=(AND | OR) exp              # logic
     ;
 
@@ -28,6 +29,9 @@ MUL : '*' ;
 DIV : '/' ;
 
 EQQ : '==' ;
+NEQ : '!='  ;
+LEQ : '<='  ;
+GEQ : '>='  ;
 LT  : '<' ;
 GT  : '>' ;
 
