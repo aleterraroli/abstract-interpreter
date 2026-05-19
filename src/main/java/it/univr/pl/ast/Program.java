@@ -1,5 +1,8 @@
 package it.univr.pl.ast;
 
+import it.univr.pl.ast.stmt.Statement;
+import java.util.List;
+
 public class Program {
 
     private final List<Statement> statements;
