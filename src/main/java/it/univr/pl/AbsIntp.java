@@ -94,5 +94,10 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
         return ComValue.INSTANCE;
     }
 
+    @Override
+    public IntValue visitIntVal(AbsParser.IntValContext ctx) {
+        return new IntValue(Integer.parseInt(ctx.INT().getText()));
+    }
+
 
 }
