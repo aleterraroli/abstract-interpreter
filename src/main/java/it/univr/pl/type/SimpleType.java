@@ -5,4 +5,7 @@ public enum SimpleType implements ExpType {
     BOOL("bool");
     private final String name;
     SimpleType(String name) {this.name = name;}
+
+    @Override
+    public String getName() {return name;}
 }
