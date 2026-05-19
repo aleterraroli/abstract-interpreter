@@ -150,4 +150,16 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
         assert result != null; // always true
         return new IntValue((int) result.doubleValue());
     }
+
+    @Override
+    public BoolValue visitEqExp(AbsParser.EqExpContext ctx) {
+        ExpValue<?> left = visitExp(ctx.exp(0));
+        ExpValue<?> right = visitExp(ctx.exp(1));
+
+        return switch (ctx.op.getType()) {
+            case AbsParser.EQQ -> new BoolValue(left.equals(right));
+            case AbsParser.NEQ -> new BoolValue(!left.equals(right));
+            default -> null; // unreachable code
+        };
+    }
 }
