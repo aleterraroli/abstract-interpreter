@@ -183,4 +183,16 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
             default -> null; // unreachable code
         };
     }
+
+    @Override
+    public BoolValue visitLogic(AbsParser.LogicContext ctx) {
+        BoolValue left = visitBoolExp(ctx.exp(0));
+        BoolValue right = visitBoolExp(ctx.exp(1));
+
+        return switch (ctx.op.getType()) {
+            case AbsParser.AND -> new BoolValue(left.toJavaValue() && right.toJavaValue());
+            case AbsParser.OR -> new BoolValue(left.toJavaValue() || right.toJavaValue());
+            default -> null; // unreachable code
+        };
+    }
 }
