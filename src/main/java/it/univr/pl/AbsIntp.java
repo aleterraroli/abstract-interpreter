@@ -19,9 +19,9 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
 
     private ExpValue<?> visitExp(AbsParser.ExpContext ctx) {return (ExpValue<?>) visit(ctx);}
 
-    private IntValue visitInt(AbsParser.ExpContext ctx) {return (IntValue) visit(ctx);}
+    private IntValue visitIntExp(AbsParser.ExpContext ctx) {return (IntValue) visit(ctx);}
 
-    private BoolValue visitBool(AbsParser.ExpContext ctx) {return (BoolValue) visit(ctx);}
+    private BoolValue visitBoolExp(AbsParser.ExpContext ctx) {return (BoolValue) visit(ctx);}
 
     @Override
 	public Value visitMain(AbsParser.MainContext ctx) {
@@ -42,4 +42,15 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
         return ComValue.INSTANCE;
     }
 
+    @Override
+    public ComValue visitIf(AbsParser.IfContext ctx) {
+        if (!visitBoolExp(ctx.exp()).toJavaValue())
+            return ComValue.INSTANCE;
+
+        AbsIntp interpreter = new AbsIntp(mem);
+        interpreter.visitCom(ctx.com());
+        mem.updateValues(interpreter.getMem());
+
+        return ComValue.INSTANCE;
+    }
 }
