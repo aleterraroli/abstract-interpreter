@@ -1,6 +1,7 @@
 package it.univr.pl;
 
 import it.univr.pl.type.ExpType;
+import it.univr.pl.type.SimpleType;
 import it.univr.pl.type.TypeUtils;
 import it.univr.pl.value.*;
 
@@ -22,6 +23,10 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
     private IntValue visitIntExp(AbsParser.ExpContext ctx) {return (IntValue) visit(ctx);}
 
     private BoolValue visitBoolExp(AbsParser.ExpContext ctx) {return (BoolValue) visit(ctx);}
+
+    private double unwrapToDouble(IntValue value) {
+        return value.toJavaValue().doubleValue();
+    }
 
     @Override
 	public Value visitMain(AbsParser.MainContext ctx) {
@@ -112,5 +117,21 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
     @Override
     public Value visitNot(AbsParser.NotContext ctx) {
         return new BoolValue(!visitBoolExp(ctx.exp()).toJavaValue());
+    }
+
+    @Override
+    public ExpValue<?> visitMulDiv(AbsParser.MulDivContext ctx) {
+        IntValue left = visitIntExp(ctx.exp(0));
+        IntValue right = visitIntExp(ctx.exp(1));
+
+        Double result;
+        switch (ctx.op.getType()) {
+            case AbsParser.DIV -> result = unwrapToDouble(left) / unwrapToDouble(right);
+            case AbsParser.MUL -> result = unwrapToDouble(left) * unwrapToDouble(right);
+            default -> result = null; // unreachable code
+        }
+
+        assert result != null; // always true
+        return new IntValue((int) result.doubleValue());
     }
 }
