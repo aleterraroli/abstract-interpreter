@@ -99,5 +99,9 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
         return new IntValue(Integer.parseInt(ctx.INT().getText()));
     }
 
+    @Override
+    public BoolValue visitBoolVal(AbsParser.BoolValContext ctx) {
+        return new BoolValue(Boolean.parseBoolean(ctx.BOOL().getText()));
+    }
 
 }
