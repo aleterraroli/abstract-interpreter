@@ -108,4 +108,9 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
     public Value visitParExp(AbsParser.ParExpContext ctx) {
         return visitExp(ctx.exp());
     }
+
+    @Override
+    public Value visitNot(AbsParser.NotContext ctx) {
+        return new BoolValue(!visitBoolExp(ctx.exp()).toJavaValue());
+    }
 }
