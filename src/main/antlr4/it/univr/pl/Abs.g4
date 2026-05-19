@@ -1,9 +1,9 @@
 grammar Abs;
 
-main : com* EOF ;
+main : com EOF ;
 
-com
-    : ID ASSIGN exp SC                  # assign
+com : TYPE ID (ASSIGN exp)?             # decl
+    | ID ASSIGN exp SC                  # assign
     | IF LPAR exp RPAR com              # if
     | IF LPAR exp RPAR com ELSE com     # ifElse
     | WHILE LPAR exp RPAR com           # while
@@ -11,8 +11,7 @@ com
     | OUT exp SC                        # print
     ;
 
-exp
-    : INT                                # intVal
+exp : INT                                # intVal
     | BOOL                               # boolVal
     | ID                                 # id
     | LPAR exp RPAR                      # parExp
@@ -51,6 +50,7 @@ RBRACE : '}' ;
 
 SC : ';' ;
 
+TYPE : 'int' | 'bool' ;
 BOOL : 'true' | 'false' ;
 
 INT : [0-9]+ ;
