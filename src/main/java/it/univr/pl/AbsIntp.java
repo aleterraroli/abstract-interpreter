@@ -104,4 +104,8 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
         return new BoolValue(Boolean.parseBoolean(ctx.BOOL().getText()));
     }
 
+    @Override
+    public Value visitParExp(AbsParser.ParExpContext ctx) {
+        return visitExp(ctx.exp());
+    }
 }
