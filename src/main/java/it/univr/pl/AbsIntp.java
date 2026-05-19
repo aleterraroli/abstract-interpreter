@@ -75,4 +75,16 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
 
         return ComValue.INSTANCE;
     }
+
+    @Override
+    public ComValue visitWhile(AbsParser.WhileContext ctx) {
+        if (!visitBoolExp(ctx.exp()).toJavaValue())
+            return ComValue.INSTANCE;
+
+        AbsIntp interpreter = new AbsIntp(mem);
+        interpreter.visitCom(ctx.com());
+        mem.updateValues(interpreter.getMem());
+
+        return visitWhile(ctx);
+    }
 }
