@@ -1,0 +1,7 @@
+package it.univr.pl.exception;
+
+public class VarDeclarationException extends RuntimeException {
+    public VarDeclarationException(String message) {
+        super(message);
+    }
+}
