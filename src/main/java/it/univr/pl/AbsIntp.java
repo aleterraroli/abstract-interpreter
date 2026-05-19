@@ -1,5 +1,7 @@
 package it.univr.pl;
 
+import it.univr.pl.type.ExpType;
+import it.univr.pl.type.TypeUtils;
 import it.univr.pl.value.*;
 
 public class AbsIntp extends AbsBaseVisitor<Value> {
@@ -24,6 +26,20 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
     @Override
 	public Value visitMain(AbsParser.MainContext ctx) {
         return visitChildren(ctx);
+    }
+
+    @Override
+    public ComValue visitDecl(AbsParser.DeclContext ctx) {
+
+        ExpType type = TypeUtils.fromString(ctx.TYPE().getText());
+        String id = ctx.ID().getText();
+        mem.add(id, (ExpValue<?>) type);
+        if (ctx.exp() != null) {
+            ExpValue<?> val = visitExp(ctx.exp());
+            mem.updateValue(id, val);
+        }
+
+        return ComValue.INSTANCE;
     }
 
 }
