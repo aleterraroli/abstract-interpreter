@@ -9,15 +9,15 @@ public class MainAbstractInterpreter {
 
     public static void main(String[] args) {
 
-        String prog = "x = 3;";
-        CharStream cs = CharStreams.fromString(prog);
-        AbsLexer lexer = new AbsLexer(cs);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        AbsParser parser = new AbsParser(tokens);
-        ParseTree tree = parser.main();
-        System.out.println(tree.toStringTree(parser));
-        AbsIntp interpreter = new AbsIntp();
-        interpreter.visit(tree);
+//        String prog = "x = 3;";
+//        CharStream cs = CharStreams.fromString(prog);
+//        AbsLexer lexer = new AbsLexer(cs);
+//        CommonTokenStream tokens = new CommonTokenStream(lexer);
+//        AbsParser parser = new AbsParser(tokens);
+//        ParseTree tree = parser.main();
+//        System.out.println(tree.toStringTree(parser));
+//        AbsIntp interpreter = new AbsIntp();
+//        interpreter.visit(tree);
 
     }
 }
