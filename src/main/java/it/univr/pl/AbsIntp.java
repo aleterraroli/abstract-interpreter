@@ -65,4 +65,14 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
 
         return ComValue.INSTANCE;
     }
+
+    @Override
+    public ComValue visitAssign(AbsParser.AssignContext ctx) {
+        String id = ctx.ID().getText();
+        ExpValue<?> v = visitExp(ctx.exp());
+
+        mem.updateValue(id, v); // safe due to type checking
+
+        return ComValue.INSTANCE;
+    }
 }
