@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="" />
+    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/AbsTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/AbsTS.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +19,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -118,7 +122,7 @@
       <workItem from="1779119116471" duration="124000" />
       <workItem from="1779119346915" duration="134000" />
       <workItem from="1779119501909" duration="118000" />
-      <workItem from="1779174402166" duration="3641000" />
+      <workItem from="1779174402166" duration="4534000" />
     </task>
     <servers />
   </component>

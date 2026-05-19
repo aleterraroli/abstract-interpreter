@@ -37,20 +37,9 @@ public class AbsTS extends AbsBaseVisitor<Type> {
         return SimpleType.BOOL;
     }
 
-    private SimpleType visitStringExp(AbsParser.ExpContext ctx) {
+    private SimpleType visitIntExp(AbsParser.ExpContext ctx) {
         ExpType expType = (ExpType) visit(ctx);
-        if (!expType.isCompatible(SimpleType.STRING)) { // not string expression
-            String err = "Type mismatch: string expression expected.\n" +
-                    "@" + ctx.start.getLine() + ":" + ctx.start.getCharPositionInLine() + "\n";
-            throw new TypeMismatchException(err);
-        }
-
-        return SimpleType.STRING;
-    }
-
-    private SimpleType visitNumExp(AbsParser.ExpContext ctx) {
-        ExpType expType = (ExpType) visit(ctx);
-        if (!expType.isCompatible(SimpleType.INT) && !expType.isCompatible(SimpleType.DEC)) { // not numeric expression
+        if (!expType.isCompatible(SimpleType.INT)) { // not numeric expression
             String err = "Type mismatch: numeric expression expected.\n" +
                     "@" + ctx.start.getLine() + ":" + ctx.start.getCharPositionInLine() + "\n";
             throw new TypeMismatchException(err);
@@ -145,12 +134,6 @@ public class AbsTS extends AbsBaseVisitor<Type> {
     }
 
     @Override
-    public ComType visitSeq(AbsParser.SeqContext ctx) {
-        visitCom(ctx.com(0));
-        return visitCom(ctx.com(1));
-    }
-
-    @Override
     public ExpType visitId(AbsParser.IdContext ctx) {
         String id = ctx.ID().getText();
         if (!typeMap.containsKey(id)) { // not declared variable
@@ -163,83 +146,43 @@ public class AbsTS extends AbsBaseVisitor<Type> {
     }
 
     @Override
-    public ComType visitOut(AbsParser.OutContext ctx) {
-        visitStringExp(ctx.exp());
+    public ComType visitPrint(AbsParser.PrintContext ctx) {
+        visitIntExp(ctx.exp());
 
         return ComType.INSTANCE;
     }
 
     @Override
-    public ComType visitNop(AbsParser.NopContext ctx) {
-        return ComType.INSTANCE;
-    }
-
-
-    @Override
-    public SimpleType visitTostr(AbsParser.TostrContext ctx) {
-        visit(ctx.exp());
-
-        return SimpleType.STRING;
-    }
-
-    @Override
-    public SimpleType visitMulDivMod(AbsParser.MulDivModContext ctx) {
-        SimpleType left = visitNumExp(ctx.exp(0));
-        SimpleType right = visitNumExp(ctx.exp(1));
-
+    public SimpleType visitMulDiv(AbsParser.MulDivContext ctx) {
+        SimpleType left = visitIntExp(ctx.exp(0));
+        SimpleType right = visitIntExp(ctx.exp(1));
         if (!tryToUpcast(left, right)) {
             String err = "Type mismatch: the operation cannot be applied to the given operands.\n" +
                     "@" + ctx.start.getLine() + ":" + ctx.start.getCharPositionInLine() + "\n";
             throw new TypeMismatchException(err);
         }
-
         return left.isCompatible(right) ? left : right;
     }
 
     @Override
-    public SimpleType visitString(AbsParser.StringContext ctx) {
-        return SimpleType.STRING;
-    }
-
-    @Override
-    public SimpleType visitNumeric(AbsParser.NumericContext ctx) {
-        return (SimpleType) visit(ctx.num());
-    }
-
-    @Override
-    public SimpleType visitIntNum(AbsParser.IntNumContext ctx) {
+    public SimpleType visitIntVal(AbsParser.IntValContext ctx) {
         return SimpleType.INT;
     }
 
     @Override
-    public SimpleType visitDecNum(AbsParser.DecNumContext ctx) {
-        return SimpleType.DEC;
-    }
-
-    @Override
     public SimpleType visitAddSub(AbsParser.AddSubContext ctx) {
-        SimpleType left = visitNumExp(ctx.exp(0));
-        SimpleType right = visitNumExp(ctx.exp(1));
-
+        SimpleType left = visitIntExp(ctx.exp(0));
+        SimpleType right = visitIntExp(ctx.exp(1));
         if (!tryToUpcast(left, right)) {
             String err = "Type mismatch: the operation cannot be applied to the given operands.\n" +
                     "@" + ctx.start.getLine() + ":" + ctx.start.getCharPositionInLine() + "\n";
             throw new TypeMismatchException(err);
         }
-
         return left.isCompatible(right) ? left : right;
     }
 
     @Override
-    public SimpleType visitConcat(AbsParser.ConcatContext ctx) {
-        visitStringExp(ctx.exp(0));
-        visitStringExp(ctx.exp(1));
-
-        return SimpleType.STRING;
-    }
-
-    @Override
-    public SimpleType visitAndOr(AbsParser.AndOrContext ctx) {
+    public SimpleType visitLogic(AbsParser.LogicContext ctx) {
         visitBoolExp(ctx.exp(0));
         visitBoolExp(ctx.exp(1));
 
@@ -268,14 +211,14 @@ public class AbsTS extends AbsBaseVisitor<Type> {
     }
 
     @Override
-    public SimpleType visitBoolean(AbsParser.BooleanContext ctx) {
+    public SimpleType visitBoolVal(AbsParser.BoolValContext ctx) {
         return SimpleType.BOOL;
     }
 
     @Override
     public SimpleType visitCmpExp(AbsParser.CmpExpContext ctx) {
-        SimpleType left = visitNumExp(ctx.exp(0));
-        SimpleType right = visitNumExp(ctx.exp(1));
+        SimpleType left = visitIntExp(ctx.exp(0));
+        SimpleType right = visitIntExp(ctx.exp(1));
 
         if (!tryToUpcast(left, right)) {
             String err = "Type mismatch: the operation cannot be applied to the given operands.\n" +
@@ -289,34 +232,5 @@ public class AbsTS extends AbsBaseVisitor<Type> {
     @Override
     public ExpType visitParExp(AbsParser.ParExpContext ctx) {
         return (ExpType) visit(ctx.exp());
-    }
-
-    @Override
-    public ExpType visitCast(AbsParser.CastContext ctx) {
-        ExpType expType = (ExpType) visit(ctx.exp());
-        ExpType targetType = TypeUtils.fromString(ctx.TYPE().getText());
-
-        assert targetType != null; // always true
-        if (!targetType.isCompatible(expType) && !expType.canDownCastTo(targetType)) {
-            String err = "Type mismatch: invalid cast.\n" +
-                    "@" + ctx.start.getLine() + ":" + ctx.start.getCharPositionInLine() + "\n";
-            throw new TypeMismatchException(err);
-        }
-
-        return targetType;
-    }
-
-    @Override
-    public SimpleType visitPow(AbsParser.PowContext ctx) {
-        SimpleType base = visitNumExp(ctx.exp(0));
-        SimpleType exponent = visitNumExp(ctx.exp(1));
-
-        if (!tryToUpcast(base, exponent)) {
-            String err = "Type mismatch: the operation cannot be applied to the given operands.\n" +
-                    "@" + ctx.start.getLine() + ":" + ctx.start.getCharPositionInLine() + "\n";
-            throw new TypeMismatchException(err);
-        }
-
-        return base.isCompatible(exponent) ? base : exponent;
     }
 }
