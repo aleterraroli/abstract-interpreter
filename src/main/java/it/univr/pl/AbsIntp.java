@@ -87,4 +87,12 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
 
         return visitWhile(ctx);
     }
+
+    @Override
+    public ComValue visitPrint(AbsParser.PrintContext ctx) {
+        System.out.println(visitIntExp(ctx.exp()).toJavaValue());
+        return ComValue.INSTANCE;
+    }
+
+
 }
