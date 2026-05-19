@@ -162,4 +162,13 @@ public class AbsIntp extends AbsBaseVisitor<Value> {
             default -> null; // unreachable code
         };
     }
+
+    @Override
+    public ExpValue<?> visitId(AbsParser.IdContext ctx) {
+        String id = ctx.ID().getText();
+
+        return mem.getValue(id);
+    }
+
+
 }
