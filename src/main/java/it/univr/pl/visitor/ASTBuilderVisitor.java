@@ -43,4 +43,9 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
         BinaryOperator op = ctx.op.getType() == AbsParser.ADD ? BinaryOperator.ADD : BinaryOperator.SUB;
         return new BinaryExpression(left, op, right);
     }
+
+    @Override
+    public Object visitAssign(AbsParser.AssignContext ctx) {
+        return new AssignStatement(ctx.ID().getText(),(Expression) visit(ctx.exp()));
+    }
 }
