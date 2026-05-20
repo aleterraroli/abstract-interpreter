@@ -1,11 +1,13 @@
 package it.univr.pl.ast.expr;
-
 import it.univr.pl.ast.operator.BinaryOperator;
 
-public class BinaryExpression extends Expression {
+public class BinaryExpression
+        extends Expression {
 
     private final Expression left;
+
     private final Expression right;
+
     private final BinaryOperator operator;
 
     public BinaryExpression(
@@ -28,5 +30,17 @@ public class BinaryExpression extends Expression {
 
     public BinaryOperator getOperator() {
         return operator;
+    }
+
+    @Override
+    public String toString() {
+
+        return "(" +
+                left +
+                " " +
+                operator +
+                " " +
+                right +
+                ")";
     }
 }
