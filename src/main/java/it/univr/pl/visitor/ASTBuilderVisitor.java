@@ -26,5 +26,13 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
         return new IntLiteral(Integer.parseInt(ctx.INT().getText()));
     }
 
+    @Override
+    public Object visitBoolVal(AbsParser.BoolValContext ctx) {
+        return new BoolLiteral(Boolean.parseBoolean(ctx.BOOL().getText()));
+    }
 
+    @Override
+    public Object visitId(AbsParser.IdContext ctx) {
+        return new Variable(ctx.ID().getText());
+    }
 }
