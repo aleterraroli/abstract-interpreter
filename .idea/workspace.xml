@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="" />
+    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/ast/expr/UnaryExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +16,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Exception" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -121,7 +124,8 @@
       <workItem from="1779119501909" duration="118000" />
       <workItem from="1779174402166" duration="5292000" />
       <workItem from="1779181072959" duration="858000" />
-      <workItem from="1779214788864" duration="1084000" />
+      <workItem from="1779214788864" duration="1612000" />
+      <workItem from="1779261159721" duration="337000" />
     </task>
     <servers />
   </component>
