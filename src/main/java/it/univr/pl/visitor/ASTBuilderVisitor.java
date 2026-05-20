@@ -48,4 +48,9 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
     public Object visitAssign(AbsParser.AssignContext ctx) {
         return new AssignStatement(ctx.ID().getText(),(Expression) visit(ctx.exp()));
     }
+
+    @Override
+    public Object visitIfElse(AbsParser.IfElseContext ctx) {
+        return new IfStatement((Expression) visit(ctx.exp()),(Statement) visit(ctx.com(0)),(Statement) visit(ctx.com(0)));
+    }
 }
