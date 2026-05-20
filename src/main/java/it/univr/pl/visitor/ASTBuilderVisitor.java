@@ -35,4 +35,12 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
     public Object visitId(AbsParser.IdContext ctx) {
         return new Variable(ctx.ID().getText());
     }
+
+    @Override
+    public Object visitAddSub(AbsParser.AddSubContext ctx) {
+        Expression left = (Expression) visit(ctx.exp(0));
+        Expression right = (Expression) visit(ctx.exp(1));
+        BinaryOperator op = ctx.op.getType() == AbsParser.ADD ? BinaryOperator.ADD : BinaryOperator.SUB;
+        return new BinaryExpression(left, op, right);
+    }
 }
