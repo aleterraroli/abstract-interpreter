@@ -1,7 +1,9 @@
-package it.univr.pl;
+package it.univr.pl.parser;
 
+import it.univr.pl.AbsBaseVisitor;
+import it.univr.pl.AbsParser;
+import it.univr.pl.Mem;
 import it.univr.pl.type.ExpType;
-import it.univr.pl.type.SimpleType;
 import it.univr.pl.type.TypeUtils;
 import it.univr.pl.value.*;
 

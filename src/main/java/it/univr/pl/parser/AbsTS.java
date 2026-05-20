@@ -1,5 +1,7 @@
-package it.univr.pl;
+package it.univr.pl.parser;
 
+import it.univr.pl.AbsBaseVisitor;
+import it.univr.pl.AbsParser;
 import it.univr.pl.exception.TypeMismatchException;
 import it.univr.pl.exception.VarDeclarationException;
 import it.univr.pl.type.*;
@@ -54,7 +56,7 @@ public class AbsTS extends AbsBaseVisitor<Type> {
 
     @Override
     public ComType visitMain(AbsParser.MainContext ctx) {
-        return visitCom(ctx.com());
+        return visitCom((AbsParser.ComContext) ctx.com());
     }
 
     @Override
