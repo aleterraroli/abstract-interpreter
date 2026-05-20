@@ -11,4 +11,9 @@ public class IntLiteral extends Expression {
     public int getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(value);
+    }
 }
