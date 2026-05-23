@@ -145,4 +145,9 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
     public Object visitIf(AbsParser.IfContext ctx) {
         return new IfStatement((Expression) visit(ctx.exp()), (Statement) visit(ctx.com()),null);
     }
+
+    @Override
+    public Object visitWhile(AbsParser.WhileContext ctx) {
+        return new WhileStatement((Expression) visit(ctx.exp()), (Statement) visit(ctx.com()));
+    }
 }
