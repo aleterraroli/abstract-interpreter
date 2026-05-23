@@ -135,4 +135,11 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
         }
         return new BinaryExpression(left, op, right);
     }
+
+    @Override
+    public Object visitParExp(AbsParser.ParExpContext ctx) {
+        return visit(ctx.exp());
+    }
+
+
 }
