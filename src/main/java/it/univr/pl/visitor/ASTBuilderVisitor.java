@@ -61,4 +61,10 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
     public Object visitIfElse(AbsParser.IfElseContext ctx) {
         return new IfStatement((Expression) visit(ctx.exp()),(Statement) visit(ctx.com(0)),(Statement) visit(ctx.com(0)));
     }
+
+    @Override
+    public Object visitNot(AbsParser.NotContext ctx) {
+        UnaryOperator not =  AbsParser.NOT;
+        return new UnaryExpression(not,(Expression) visit(ctx.exp()));
+    }
 }
