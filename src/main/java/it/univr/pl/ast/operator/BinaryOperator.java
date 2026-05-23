@@ -10,9 +10,10 @@ public enum BinaryOperator {
     LT,
     GT,
     EQ,
+    NEQ,
 
-    AND,
     LEQ,
     GEQ,
+    AND,
     OR
 }

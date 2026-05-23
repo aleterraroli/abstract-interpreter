@@ -98,10 +98,26 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
                 );
         }
 
-        return new BinaryExpression(
-                left,
-                op,
-                right
-        );
+        return new BinaryExpression(left, op, right);
+    }
+
+    @Override
+    public Object visitEqExp(AbsParser.EqExpContext ctx) {
+        Expression left = (Expression) visit(ctx.exp(0));
+        Expression right = (Expression) visit(ctx.exp(1));
+        BinaryOperator op;
+        switch (ctx.op.getType()) {
+            case AbsParser.EQQ:
+                op = BinaryOperator.EQ;
+                break;
+            case AbsParser.NEQ:
+                op = BinaryOperator.NEQ;
+                break;
+            default:
+                throw new RuntimeException(
+                        "Invalid equality operator"
+                );
+        }
+        return new BinaryExpression(left, op, right);
     }
 }
