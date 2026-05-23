@@ -150,4 +150,11 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
     public Object visitWhile(AbsParser.WhileContext ctx) {
         return new WhileStatement((Expression) visit(ctx.exp()), (Statement) visit(ctx.com()));
     }
+
+    @Override
+    public Object visitPrint(AbsParser.PrintContext ctx) {
+        return new PrintStatement((Expression) visit(ctx.exp()));
+    }
+
+
 }
