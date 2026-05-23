@@ -6,6 +6,8 @@ import it.univr.pl.ast.*;
 import it.univr.pl.ast.expr.*;
 import it.univr.pl.ast.operator.*;
 import it.univr.pl.ast.stmt.*;
+import it.univr.pl.type.SimpleType;
+import it.univr.pl.type.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -164,5 +166,25 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
             statements.add((Statement) visit(com));
         }
         return new BlockStatement(statements);
+    }
+
+    @Override
+    public Object visitDecl(AbsParser.DeclContext ctx) {
+        Type type;
+        switch (ctx.TYPE().getText()) {
+            case "int":
+                type = SimpleType.INT;
+                break;
+            case "bool":
+                type = SimpleType.BOOL;
+                break;
+            default:
+                throw new RuntimeException("Unknown type");
+        }
+        Expression initializer = null;
+        if (ctx.exp() != null) {
+            initializer = (Expression) visit(ctx.exp());
+        }
+        return new DeclarationStatement(type, ctx.ID().getText(), initializer);
     }
 }
