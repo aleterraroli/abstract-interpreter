@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/ASTBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/ASTBuilderVisitor.java" afterDir="false" />
-    </list>
+    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +124,7 @@
       <workItem from="1779214788864" duration="1612000" />
       <workItem from="1779261159721" duration="5488000" />
       <workItem from="1779353354010" duration="6000" />
-      <workItem from="1779559259939" duration="615000" />
+      <workItem from="1779559259939" duration="1077000" />
     </task>
     <servers />
   </component>

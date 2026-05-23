@@ -93,9 +93,7 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
                 break;
 
             default:
-                throw new RuntimeException(
-                        "Invalid comparison operator"
-                );
+                throw new RuntimeException("Invalid comparison operator");
         }
 
         return new BinaryExpression(left, op, right);
@@ -114,9 +112,26 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
                 op = BinaryOperator.NEQ;
                 break;
             default:
-                throw new RuntimeException(
-                        "Invalid equality operator"
-                );
+                throw new RuntimeException("Invalid equality operator");
+        }
+        return new BinaryExpression(left, op, right);
+    }
+
+    @Override
+    public Object visitLogic(AbsParser.LogicContext ctx) {
+        Expression left = (Expression) visit(ctx.exp(0));
+        Expression right = (Expression) visit(ctx.exp(1));
+        BinaryOperator op;
+        switch (ctx.op.getType()) {
+            case AbsParser.AND:
+                op = BinaryOperator.AND;
+                break;
+            case AbsParser.OR:
+                op = BinaryOperator.OR;
+                break;
+            default:
+                throw new RuntimeException("Invalid logic operator");
+
         }
         return new BinaryExpression(left, op, right);
     }
