@@ -141,5 +141,8 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
         return visit(ctx.exp());
     }
 
-
+    @Override
+    public Object visitIf(AbsParser.IfContext ctx) {
+        return new IfStatement((Expression) visit(ctx.exp()), (Statement) visit(ctx.com()),null);
+    }
 }
