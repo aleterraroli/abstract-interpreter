@@ -12,5 +12,7 @@ public enum BinaryOperator {
     EQ,
 
     AND,
+    LEQ,
+    GEQ,
     OR
 }

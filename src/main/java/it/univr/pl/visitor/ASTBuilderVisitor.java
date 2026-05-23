@@ -59,12 +59,49 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
 
     @Override
     public Object visitIfElse(AbsParser.IfElseContext ctx) {
-        return new IfStatement((Expression) visit(ctx.exp()),(Statement) visit(ctx.com(0)),(Statement) visit(ctx.com(0)));
+        return new IfStatement((Expression) visit(ctx.exp()),(Statement) visit(ctx.com(0)),(Statement) visit(ctx.com(1)));
     }
 
     @Override
     public Object visitNot(AbsParser.NotContext ctx) {
-        UnaryOperator not =  AbsParser.NOT;
-        return new UnaryExpression(not,(Expression) visit(ctx.exp()));
+        return new UnaryExpression(UnaryOperator.NOT,(Expression) visit(ctx.exp()));
+    }
+
+    @Override
+    public Object visitCmpExp(AbsParser.CmpExpContext ctx) {
+
+        Expression left = (Expression) visit(ctx.exp(0));
+        Expression right = (Expression) visit(ctx.exp(1));
+        BinaryOperator op;
+
+        switch (ctx.op.getType()) {
+
+            case AbsParser.LT:
+                op = BinaryOperator.LT;
+                break;
+
+            case AbsParser.LEQ:
+                op = BinaryOperator.LEQ;
+                break;
+
+            case AbsParser.GT:
+                op = BinaryOperator.GT;
+                break;
+
+            case AbsParser.GEQ:
+                op = BinaryOperator.GEQ;
+                break;
+
+            default:
+                throw new RuntimeException(
+                        "Invalid comparison operator"
+                );
+        }
+
+        return new BinaryExpression(
+                left,
+                op,
+                right
+        );
     }
 }
