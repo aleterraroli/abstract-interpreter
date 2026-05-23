@@ -156,5 +156,13 @@ public class ASTBuilderVisitor extends AbsBaseVisitor<Object> {
         return new PrintStatement((Expression) visit(ctx.exp()));
     }
 
+    @Override
+    public Object visitBlock(AbsParser.BlockContext ctx) {
 
+        List<Statement> statements = new ArrayList<>();
+        for (AbsParser.ComContext com : ctx.com()) {
+            statements.add((Statement) visit(com));
+        }
+        return new BlockStatement(statements);
+    }
 }
