@@ -8,9 +8,7 @@ public class Program {
 
     private final List<Statement> statements;
 
-    public Program(
-            List<Statement> statements) {
-
+    public Program(List<Statement> statements) {
         this.statements = statements;
     }
 
@@ -21,15 +19,10 @@ public class Program {
     @Override
     public String toString() {
 
-        StringBuilder sb =
-                new StringBuilder();
-
+        StringBuilder sb = new StringBuilder();
         for (Statement stmt : statements) {
-
-            sb.append(stmt)
-                    .append("\n");
+            sb.append(stmt).append("\n");
         }
-
         return sb.toString();
     }
 }
