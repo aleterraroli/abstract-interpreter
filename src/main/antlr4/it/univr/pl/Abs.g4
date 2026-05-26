@@ -2,7 +2,7 @@ grammar Abs;
 
 main : com+ EOF ;
 
-com : TYPE ID (ASSIGN exp)?             # decl
+com : TYPE ID (ASSIGN exp)? SC          # decl
     | ID ASSIGN exp SC                  # assign
     | IF LPAR exp RPAR com              # if
     | IF LPAR exp RPAR com ELSE com     # ifElse
