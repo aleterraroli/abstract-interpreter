@@ -1,6 +1,7 @@
 package it.univr.pl.ast;
 
 import it.univr.pl.ast.stmt.Statement;
+import it.univr.pl.visitor.ASTVisitor;
 
 import java.util.List;
 
@@ -14,6 +15,10 @@ public class Program {
 
     public List<Statement> getStatements() {
         return statements;
+    }
+
+    public <T> T accept(ASTVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

@@ -10,6 +10,8 @@ import java.util.Map;
 
 public class TypeCheckVisitor implements ASTVisitor<Type> {
 
+    private final Map<String, Type> simbolTable = new HashMap<>();
+
     @Override
     public Type visit(Program program) {
         return null;
