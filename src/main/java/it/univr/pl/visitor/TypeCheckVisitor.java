@@ -14,7 +14,10 @@ public class TypeCheckVisitor implements ASTVisitor<Type> {
 
     @Override
     public Type visit(Program program) {
-        return null;
+        for (Statement stmt : program.getStatements()) {
+            stmt.accept(this);
+        }
+        return ComType.INSTANCE;
     }
 
     @Override
