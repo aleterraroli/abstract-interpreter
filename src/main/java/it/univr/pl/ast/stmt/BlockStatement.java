@@ -1,10 +1,17 @@
 package it.univr.pl.ast.stmt;
 
+import it.univr.pl.visitor.ASTVisitor;
+
 import java.util.List;
 
 public class BlockStatement extends Statement {
 
     private final List<Statement> statements;
+
+    @Override
+    public <T> T accept(ASTVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
     public BlockStatement(
             List<Statement> statements) {

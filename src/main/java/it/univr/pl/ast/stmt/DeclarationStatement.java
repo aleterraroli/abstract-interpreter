@@ -2,6 +2,7 @@ package it.univr.pl.ast.stmt;
 
 import it.univr.pl.ast.expr.Expression;
 import it.univr.pl.type.Type;
+import it.univr.pl.visitor.ASTVisitor;
 
 public class DeclarationStatement extends Statement {
 
@@ -10,6 +11,11 @@ public class DeclarationStatement extends Statement {
     private final String variable;
 
     private final Expression initializer;
+
+    @Override
+    public <T> T accept(ASTVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
     public DeclarationStatement(
             Type type,

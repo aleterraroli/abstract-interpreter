@@ -1,14 +1,19 @@
 package it.univr.pl.ast.expr;
 import it.univr.pl.ast.operator.BinaryOperator;
+import it.univr.pl.visitor.ASTVisitor;
 
-public class BinaryExpression
-        extends Expression {
+public class BinaryExpression extends Expression {
 
     private final Expression left;
 
     private final Expression right;
 
     private final BinaryOperator operator;
+
+    @Override
+    public <T> T accept(ASTVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
     public BinaryExpression(
             Expression left,

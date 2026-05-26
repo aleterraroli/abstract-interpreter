@@ -1,12 +1,17 @@
 package it.univr.pl.ast.expr;
 import it.univr.pl.ast.operator.UnaryOperator;
+import it.univr.pl.visitor.ASTVisitor;
 
-public class UnaryExpression
-        extends Expression {
+public class UnaryExpression extends Expression {
 
     private final UnaryOperator operator;
 
     private final Expression expression;
+
+    @Override
+    public <T> T accept(ASTVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 
     public UnaryExpression(
             UnaryOperator operator,
