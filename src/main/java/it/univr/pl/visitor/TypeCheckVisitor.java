@@ -21,6 +21,16 @@ public class TypeCheckVisitor implements ASTVisitor<Type> {
     }
 
     @Override
+    public Type visit(IntLiteral expr) {
+        return SimpleType.INT;
+    }
+
+    @Override
+    public Type visit(BoolLiteral expr) {
+        return SimpleType.BOOL;
+    }
+
+    @Override
     public Type visit(BinaryExpression expr) {
         return null;
     }
@@ -32,16 +42,6 @@ public class TypeCheckVisitor implements ASTVisitor<Type> {
 
     @Override
     public Type visit(Variable expr) {
-        return null;
-    }
-
-    @Override
-    public Type visit(IntLiteral expr) {
-        return null;
-    }
-
-    @Override
-    public Type visit(BoolLiteral expr) {
         return null;
     }
 
