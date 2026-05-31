@@ -1,4 +1,4 @@
-package it.univr.pl.parser;
+package it.univr.pl.visitor;
 
 import it.univr.pl.AbsBaseVisitor;
 import it.univr.pl.AbsParser;
