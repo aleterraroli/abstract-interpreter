@@ -31,12 +31,14 @@ In this project, the concrete domain of integers $\mathbb{Z}$ is abstracted into
 ### Soundness & Fixpoint Convergence
 The analyzer computes a **Sound Approximation** of the program state: it is guaranteed to never lie, though it may lose precision to remain decidable.
 
-1.  **Conditional Branching (`If-Else`)**: Since the static guard value could evaluate to $\top$, both paths are explored. Their final abstract memories are reconciled at the join-point using the **Least Upper Bound (LUB)** operator:
-    $$\text{Memory}_{\text{final}} = \text{Memory}_{\text{Then}} \sqcup \text{Memory}_{\text{Else}}$$
-2.  **Loops (`While`)**: To solve the *Halting Problem* statically, loop analysis executes a **Fixpoint Computation**. The abstract interpreter evaluates the loop body iteratively until the abstract memory reaches a stationary state:
-    $$M_{i+1} = M_i \sqcup \text{body}(M_i)$$
-    Since the Sign Lattice has a finite height, convergence is mathematically guaranteed without falling into infinite loops.
+1. **Conditional Branching (`If-Else`)**: Since the static guard value could evaluate to $\top$, both paths are explored. Their final abstract memories are reconciled at the join-point using the **Least Upper Bound (LUB)** operator:
 
+$$\text{Memory}_{\text{final}} = \text{Memory}_{\text{Then}} \sqcup \text{Memory}_{\text{Else}}$$
+
+2. **Loops (`While`)**: To solve the *Halting Problem* statically, loop analysis executes a **Fixpoint Computation**. The abstract interpreter evaluates the loop body iteratively until the abstract memory reaches a stationary state:
+
+$$M_{i+1} = M_i \sqcup \text{body}(M_i)$$
+Since the Sign Lattice has a finite height, convergence is mathematically guaranteed without falling into infinite loops.
 ---
 
 ## Pipeline Architecture
