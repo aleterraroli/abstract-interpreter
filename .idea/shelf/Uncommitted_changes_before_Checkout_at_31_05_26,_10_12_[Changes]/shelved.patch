@@ -1,0 +1,87 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"376bd6fc-a5b8-4724-911d-db1015b91820\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Exception\" />\n        <option value=\"Enum\" />\n        <option value=\"Class\" />\n        <option value=\"Interface\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;aleterraroli&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/aleterraroli/abstract-interpreter.git&quot;,\n    &quot;accountId&quot;: &quot;47714f20-cce3-41da-8852-f7d28b5f7103&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 7\n}</component>\n  <component name=\"ProjectId\" id=\"3DoF4jmmt9OoHZRHcjAUenArQvR\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Application.MainAbstractInterpreter.executor&quot;: &quot;Run&quot;,\n    &quot;Maven.AbstractInterpreter [clean,compile].executor&quot;: &quot;Run&quot;,\n    &quot;Maven.AbstractInterpreter [clean...].executor&quot;: &quot;Run&quot;,\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunAnythingCache\">\n    <option name=\"myCommands\">\n      <command value=\"mvn clean generate-sources\" />\n      <command value=\"mvn clean compile\" />\n    </option>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409\" />\n        <option value=\"bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"376bd6fc-a5b8-4724-911d-db1015b91820\" name=\"Changes\" comment=\"\" />\n      <created>1778940326872</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1778940326872</updated>\n      <workItem from=\"1778940328748\" duration=\"12000\" />\n      <workItem from=\"1778940349169\" duration=\"53000\" />\n      <workItem from=\"1778940415726\" duration=\"13000\" />\n      <workItem from=\"1778940434940\" duration=\"20000\" />\n      <workItem from=\"1778940490398\" duration=\"26000\" />\n      <workItem from=\"1778940530653\" duration=\"109000\" />\n      <workItem from=\"1778940654509\" duration=\"17000\" />\n      <workItem from=\"1778940680971\" duration=\"26000\" />\n      <workItem from=\"1778940711753\" duration=\"41000\" />\n      <workItem from=\"1778940769553\" duration=\"33000\" />\n      <workItem from=\"1778940814225\" duration=\"7000\" />\n      <workItem from=\"1778940826856\" duration=\"23000\" />\n      <workItem from=\"1778940858259\" duration=\"2382000\" />\n      <workItem from=\"1778943287568\" duration=\"701000\" />\n      <workItem from=\"1778943998470\" duration=\"655000\" />\n      <workItem from=\"1778944712646\" duration=\"72000\" />\n      <workItem from=\"1778944826976\" duration=\"65000\" />\n      <workItem from=\"1778944907089\" duration=\"188000\" />\n      <workItem from=\"1779117644779\" duration=\"23000\" />\n      <workItem from=\"1779117700650\" duration=\"79000\" />\n      <workItem from=\"1779117799112\" duration=\"31000\" />\n      <workItem from=\"1779117857890\" duration=\"33000\" />\n      <workItem from=\"1779117902983\" duration=\"2000\" />\n      <workItem from=\"1779117910834\" duration=\"78000\" />\n      <workItem from=\"1779118122889\" duration=\"135000\" />\n      <workItem from=\"1779118276696\" duration=\"45000\" />\n      <workItem from=\"1779118331284\" duration=\"119000\" />\n      <workItem from=\"1779118467993\" duration=\"112000\" />\n      <workItem from=\"1779118655762\" duration=\"86000\" />\n      <workItem from=\"1779118767363\" duration=\"224000\" />\n      <workItem from=\"1779119007758\" duration=\"12000\" />\n      <workItem from=\"1779119027557\" duration=\"72000\" />\n      <workItem from=\"1779119116471\" duration=\"124000\" />\n      <workItem from=\"1779119346915\" duration=\"134000\" />\n      <workItem from=\"1779119501909\" duration=\"118000\" />\n      <workItem from=\"1779174402166\" duration=\"5292000\" />\n      <workItem from=\"1779181072959\" duration=\"858000\" />\n      <workItem from=\"1779214788864\" duration=\"1612000\" />\n      <workItem from=\"1779261159721\" duration=\"5488000\" />\n      <workItem from=\"1779353354010\" duration=\"6000\" />\n      <workItem from=\"1779559259939\" duration=\"1858000\" />\n      <workItem from=\"1779723466229\" duration=\"458000\" />\n      <workItem from=\"1779784943545\" duration=\"4041000\" />\n      <workItem from=\"1779798784729\" duration=\"191000\" />\n      <workItem from=\"1779862345573\" duration=\"808000\" />\n      <workItem from=\"1779999013182\" duration=\"87000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f936c05346bcb921b9351afec5c2dd2e207ba326)
++++ b/.idea/workspace.xml	(date 1780215037944)
+@@ -4,9 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-    </list>
++    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -23,6 +21,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+@@ -45,26 +48,26 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.MainAbstractInterpreter.executor&quot;: &quot;Run&quot;,
+-    &quot;Maven.AbstractInterpreter [clean,compile].executor&quot;: &quot;Run&quot;,
+-    &quot;Maven.AbstractInterpreter [clean...].executor&quot;: &quot;Run&quot;,
+-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Application.MainAbstractInterpreter.executor": "Run",
++    "Maven.AbstractInterpreter [clean,compile].executor": "Run",
++    "Maven.AbstractInterpreter [clean...].executor": "Run",
++    "ModuleVcsDetector.initialDetectionPerformed": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "git-widget-placeholder": "cfg__backup",
++    "kotlin-language-version-configured": "true",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "settings.editor.selected.configurable": "preferences.lookFeel",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RunAnythingCache">
+     <option name="myCommands">
+       <command value="mvn clean generate-sources" />
+@@ -132,6 +135,7 @@
+       <workItem from="1779798784729" duration="191000" />
+       <workItem from="1779862345573" duration="808000" />
+       <workItem from="1779999013182" duration="87000" />
++      <workItem from="1780213680814" duration="728000" />
+     </task>
+     <servers />
+   </component>
