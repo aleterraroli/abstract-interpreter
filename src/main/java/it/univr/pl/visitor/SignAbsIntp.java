@@ -32,4 +32,14 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
         mem.add(id, initialSign);
         return ComValue.INSTANCE;
     }
+
+    @Override
+    public Value visitAssign(AbsParser.AssignContext ctx) {
+        String id = ctx.ID().getText();
+        SignValue sign = (SignValue) visit(ctx.exp());
+        mem.update(id, sign);
+        return ComValue.INSTANCE;
+    }
+
+
 }
