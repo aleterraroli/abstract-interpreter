@@ -61,4 +61,3 @@ public class SignValue extends ExpValue<SignType> {
         return NEG;
     }
 }
-}

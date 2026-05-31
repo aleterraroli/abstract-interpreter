@@ -83,10 +83,13 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
             return left.mul(right);
         } else {
             return left.div(right);
+        }
     }
 
     @Override
     public Value visitIfElse(AbsParser.IfElseContext ctx) {
+        // OSTACOLO 1: Spesso non sappiamo staticamente se la condizione è True o False.
+        // Di conseguenza, dobbiamo analizzare ENTRAMBI i rami in parallelo e poi fare il LUB delle memorie.
 
         SignAbsMem branchThenMem = new SignAbsMem(this.mem);
         SignAbsIntp intpThen = new SignAbsIntp(branchThenMem);
@@ -96,9 +99,23 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
         SignAbsIntp intpElse = new SignAbsIntp(branchElseMem);
         intpElse.visit(ctx.com(1));
 
+        // Flessione del flusso: lo stato finale è il Least Upper Bound delle memorie dei due rami
         this.mem.lub(branchThenMem);
         this.mem.lub(branchElseMem);
 
         return ComValue.INSTANCE;
     }
+
+    @Override
+    public Value visitIf(AbsParser.IfContext ctx) {
+        // Se c'è solo l'If senza Else, l'alternativa implicita è non fare nulla (mantenere la memoria intatta)
+        SignAbsMem branchThenMem = new SignAbsMem(this.mem);
+        SignAbsIntp intpThen = new SignAbsIntp(branchThenMem);
+        intpThen.visit(ctx.com());
+
+        // LUB tra la memoria modificata dal Then e la memoria originale (come se l'If fosse stato saltato)
+        this.mem.lub(branchThenMem);
+        return ComValue.INSTANCE;
+    }
+
 }
