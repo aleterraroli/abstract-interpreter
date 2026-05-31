@@ -3,6 +3,7 @@ package it.univr.pl.visitor;
 import it.univr.pl.AbsBaseVisitor;
 import it.univr.pl.AbsParser;
 import it.univr.pl.SignAbsMem;
+import it.univr.pl.type.SignType;
 import it.univr.pl.value.BoolValue;
 import it.univr.pl.value.ComValue;
 import it.univr.pl.value.SignValue;
@@ -59,5 +60,45 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
     @Override
     public Value visitBoolVal(AbsParser.BoolValContext ctx) {
         return new BoolValue(Boolean.parseBoolean(ctx.BOOL().getText()));
+    }
+
+    @Override
+    public Value visitAddSub(AbsParser.AddSubContext ctx) {
+        SignValue left = (SignValue) visit(ctx.exp(0));
+        SignValue right = (SignValue) visit(ctx.exp(1));
+
+        if (ctx.op.getType() == AbsParser.ADD) {
+            return left.add(right);
+        } else {
+            return left.sub(right);
+        }
+    }
+
+    @Override
+    public Value visitMulDiv(AbsParser.MulDivContext ctx) {
+        SignValue left = (SignValue) visit(ctx.exp(0));
+        SignValue right = (SignValue) visit(ctx.exp(1));
+
+        if (ctx.op.getType() == AbsParser.MUL) {
+            return left.mul(right);
+        } else {
+            return left.div(right);
+    }
+
+    @Override
+    public Value visitIfElse(AbsParser.IfElseContext ctx) {
+
+        SignAbsMem branchThenMem = new SignAbsMem(this.mem);
+        SignAbsIntp intpThen = new SignAbsIntp(branchThenMem);
+        intpThen.visit(ctx.com(0));
+
+        SignAbsMem branchElseMem = new SignAbsMem(this.mem);
+        SignAbsIntp intpElse = new SignAbsIntp(branchElseMem);
+        intpElse.visit(ctx.com(1));
+
+        this.mem.lub(branchThenMem);
+        this.mem.lub(branchElseMem);
+
+        return ComValue.INSTANCE;
     }
 }
