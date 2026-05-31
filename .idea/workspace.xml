@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/MainAbstractInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/MainAbstractInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/type/SignType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/type/SignType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/AbsTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/AbsTS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/SignAbsIntp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/SignAbsIntp.java" afterDir="false" />
-    </list>
+    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

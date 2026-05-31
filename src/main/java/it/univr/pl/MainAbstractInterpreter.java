@@ -30,11 +30,12 @@ public class MainAbstractInterpreter {
         }
 
         for (File file : testFiles) {
-            System.out.println("Analisi del file: " + file.getName());
+            System.out.println("\nAnalisi del file: " + file.getName());
 
             try {
                 String programCode = new String(Files.readAllBytes(Paths.get(file.getPath())));
-
+                System.out.println("CODICE SORGENTE:");
+                System.out.println(programCode);
                 AbsLexer lexer = new AbsLexer(CharStreams.fromString(programCode));
                 CommonTokenStream tokens = new CommonTokenStream(lexer);
                 AbsParser parser = new AbsParser(tokens);
