@@ -1,6 +1,6 @@
 package it.univr.pl.type;
 
-public enum SignType implements ExpType{
+public enum SignType implements ExpType {
     BOTTOM("⊥"),
     ZERO("0"),
     POS("+"),
@@ -20,8 +20,10 @@ public enum SignType implements ExpType{
 
     @Override
     public boolean isCompatible(Type other) {
-        if (other == SimpleType.INT) return true;
-        return this == other || other == TOP;
+        if (other == SimpleType.INT) {
+            return true;
+        }
+        return this == other || other == SignType.TOP;
     }
 
     public SignType lub(SignType other) {
@@ -29,6 +31,7 @@ public enum SignType implements ExpType{
         if (other == BOTTOM) return this;
         if (this == TOP || other == TOP) return TOP;
         if (this == other) return this;
+
         return TOP;
     }
 }

@@ -22,7 +22,12 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
 
     @Override
     public Value visitMain(AbsParser.MainContext ctx) {
-        return visitChildren(ctx);
+        if (ctx.com() != null) {
+            for (AbsParser.ComContext comCtx : ctx.com()) {
+                visit(comCtx);
+            }
+        }
+        return ComValue.INSTANCE;
     }
 
     @Override

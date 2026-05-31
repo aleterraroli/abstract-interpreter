@@ -56,7 +56,12 @@ public class AbsTS extends AbsBaseVisitor<Type> {
 
     @Override
     public ComType visitMain(AbsParser.MainContext ctx) {
-        return visitCom((AbsParser.ComContext) ctx.com());
+        if (ctx.com() != null) {
+            for (AbsParser.ComContext comCtx : ctx.com()) {
+                visit(comCtx);
+            }
+        }
+        return ComType.INSTANCE;
     }
 
     @Override
