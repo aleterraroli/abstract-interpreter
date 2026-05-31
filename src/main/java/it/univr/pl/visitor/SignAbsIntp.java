@@ -3,6 +3,7 @@ package it.univr.pl.visitor;
 import it.univr.pl.AbsBaseVisitor;
 import it.univr.pl.AbsParser;
 import it.univr.pl.SignAbsMem;
+import it.univr.pl.value.BoolValue;
 import it.univr.pl.value.ComValue;
 import it.univr.pl.value.SignValue;
 import it.univr.pl.value.Value;
@@ -41,5 +42,22 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
         return ComValue.INSTANCE;
     }
 
+    @Override
+    public Value visitId(AbsParser.IdContext ctx) {
+        String id = ctx.ID().getText();
+        return mem.get(id);
+    }
 
+    @Override
+    public Value visitIntVal(AbsParser.IntValContext ctx) {
+        int literal = Integer.parseInt(ctx.INT().getText());
+        if (literal > 0) return SignValue.POS;
+        if (literal < 0) return SignValue.NEG;
+        return SignValue.ZERO;
+    }
+
+    @Override
+    public Value visitBoolVal(AbsParser.BoolValContext ctx) {
+        return new BoolValue(Boolean.parseBoolean(ctx.BOOL().getText()));
+    }
 }
