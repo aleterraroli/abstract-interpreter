@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/value/SignValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/SignAbsMem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,9 +17,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Exception" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
