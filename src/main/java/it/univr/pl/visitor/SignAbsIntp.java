@@ -118,4 +118,38 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
         return ComValue.INSTANCE;
     }
 
+    @Override
+    public Value visitWhile(AbsParser.WhileContext ctx) {
+        // OSTACOLO 2: Halting problem! Non sappiamo quante volte itererà il ciclo.
+        // Eseguiamo l'analisi del corpo in loop finché la memoria astratta non si stabilizza (Fixed-Point).
+
+        SignAbsMem oldMem;
+        do {
+            oldMem = new SignAbsMem(this.mem);
+
+            // Creiamo un interprete isolato per simulare un'iterazione sul corpo del ciclo
+            SignAbsMem bodyMem = new SignAbsMem(this.mem);
+            SignAbsIntp bodyIntp = new SignAbsIntp(bodyMem);
+            bodyIntp.visit(ctx.com());
+
+            // Fondiamo lo stato post-corpo con lo stato pre-corpo
+            this.mem.lub(bodyMem);
+
+        } while (!this.mem.equals(oldMem)); // Terminazione garantita dall'altezza finita del reticolo dei segni
+
+        return ComValue.INSTANCE;
+    }
+
+    @Override
+    public Value visitPrint(AbsParser.PrintContext ctx) {
+        SignValue val = (SignValue) visit(ctx.exp());
+        System.out.println("[ANALISI ASTRATTA] Stampa segno di espressione: " + val.toJavaValue());
+        return ComValue.INSTANCE;
+    }
+
+    @Override
+    public Value visitParExp(AbsParser.ParExpContext ctx) {
+        return visit(ctx.exp());
+    }
+
 }
