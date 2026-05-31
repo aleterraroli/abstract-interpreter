@@ -88,9 +88,6 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
 
     @Override
     public Value visitIfElse(AbsParser.IfElseContext ctx) {
-        // OSTACOLO 1: Spesso non sappiamo staticamente se la condizione è True o False.
-        // Di conseguenza, dobbiamo analizzare ENTRAMBI i rami in parallelo e poi fare il LUB delle memorie.
-
         SignAbsMem branchThenMem = new SignAbsMem(this.mem);
         SignAbsIntp intpThen = new SignAbsIntp(branchThenMem);
         intpThen.visit(ctx.com(0));
@@ -98,8 +95,6 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
         SignAbsMem branchElseMem = new SignAbsMem(this.mem);
         SignAbsIntp intpElse = new SignAbsIntp(branchElseMem);
         intpElse.visit(ctx.com(1));
-
-        // Flessione del flusso: lo stato finale è il Least Upper Bound delle memorie dei due rami
         this.mem.lub(branchThenMem);
         this.mem.lub(branchElseMem);
 
@@ -108,34 +103,25 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
 
     @Override
     public Value visitIf(AbsParser.IfContext ctx) {
-        // Se c'è solo l'If senza Else, l'alternativa implicita è non fare nulla (mantenere la memoria intatta)
         SignAbsMem branchThenMem = new SignAbsMem(this.mem);
         SignAbsIntp intpThen = new SignAbsIntp(branchThenMem);
         intpThen.visit(ctx.com());
-
-        // LUB tra la memoria modificata dal Then e la memoria originale (come se l'If fosse stato saltato)
         this.mem.lub(branchThenMem);
         return ComValue.INSTANCE;
     }
 
     @Override
     public Value visitWhile(AbsParser.WhileContext ctx) {
-        // OSTACOLO 2: Halting problem! Non sappiamo quante volte itererà il ciclo.
-        // Eseguiamo l'analisi del corpo in loop finché la memoria astratta non si stabilizza (Fixed-Point).
 
         SignAbsMem oldMem;
         do {
             oldMem = new SignAbsMem(this.mem);
-
-            // Creiamo un interprete isolato per simulare un'iterazione sul corpo del ciclo
             SignAbsMem bodyMem = new SignAbsMem(this.mem);
             SignAbsIntp bodyIntp = new SignAbsIntp(bodyMem);
             bodyIntp.visit(ctx.com());
-
-            // Fondiamo lo stato post-corpo con lo stato pre-corpo
             this.mem.lub(bodyMem);
 
-        } while (!this.mem.equals(oldMem)); // Terminazione garantita dall'altezza finita del reticolo dei segni
+        } while (!this.mem.equals(oldMem));
 
         return ComValue.INSTANCE;
     }
