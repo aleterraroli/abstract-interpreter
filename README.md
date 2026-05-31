@@ -38,7 +38,9 @@ $$\text{Memory}_{\text{final}} = \text{Memory}_{\text{Then}} \sqcup \text{Memory
 2. **Loops (`While`)**: To solve the *Halting Problem* statically, loop analysis executes a **Fixpoint Computation**. The abstract interpreter evaluates the loop body iteratively until the abstract memory reaches a stationary state:
 
 $$M_{i+1} = M_i \sqcup \text{body}(M_i)$$
+
 Since the Sign Lattice has a finite height, convergence is mathematically guaranteed without falling into infinite loops.
+
 ---
 
 ## Pipeline Architecture
