@@ -48,7 +48,7 @@ public class MainAbstractInterpreter {
                     System.out.println("OK (Tipi validi)");
                 } catch (TypeMismatchException | VarDeclarationException e) {
                     System.out.println("FALLITO!");
-                    System.err.println("   >> Errore di Tipo Statico: " + e.getMessage().trim());
+                    System.err.println(">> Errore di Tipo Statico: " + e.getMessage().trim());
                     System.out.println("[INFO] Analisi astratta interrotta per violazione di tipo.");
                     continue;
                 }
