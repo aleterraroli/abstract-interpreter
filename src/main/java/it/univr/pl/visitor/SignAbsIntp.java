@@ -93,41 +93,60 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
 
     @Override
     public Value visitIfElse(AbsParser.IfElseContext ctx) {
+        System.out.println("   [BRANCH] Entro nel blocco If-Else. Stato iniziale: " + this.mem);
+        
         SignAbsMem branchThenMem = new SignAbsMem(this.mem);
         SignAbsIntp intpThen = new SignAbsIntp(branchThenMem);
         intpThen.visit(ctx.com(0));
-
+        System.out.println("   ├── Fine ramo THEN. Stato speculativo: " + branchThenMem);
+        
         SignAbsMem branchElseMem = new SignAbsMem(this.mem);
         SignAbsIntp intpElse = new SignAbsIntp(branchElseMem);
         intpElse.visit(ctx.com(1));
+        System.out.println("   ├── Fine ramo ELSE. Stato speculativo: " + branchElseMem);
+        
         this.mem.lub(branchThenMem);
         this.mem.lub(branchElseMem);
+        System.out.println("   └── [MERGE LUB] Uscita If-Else. Stato riconciliato: " + this.mem);
 
         return ComValue.INSTANCE;
     }
 
     @Override
     public Value visitIf(AbsParser.IfContext ctx) {
+        System.out.println("   [BRANCH] Entro nel blocco If. Stato iniziale: " + this.mem);
+
         SignAbsMem branchThenMem = new SignAbsMem(this.mem);
         SignAbsIntp intpThen = new SignAbsIntp(branchThenMem);
         intpThen.visit(ctx.com());
+        System.out.println("   ├── Fine ramo THEN. Stato speculativo: " + branchThenMem);
+
         this.mem.lub(branchThenMem);
+        System.out.println("   └── [MERGE LUB] Uscita If. Stato riconciliato: " + this.mem);
         return ComValue.INSTANCE;
     }
 
     @Override
     public Value visitWhile(AbsParser.WhileContext ctx) {
-
+        System.out.println("   [LOOP] Inizio calcolo Punto Fisso per il ciclo While.");
+        int iteration = 1;
         SignAbsMem oldMem;
+
         do {
             oldMem = new SignAbsMem(this.mem);
+            System.out.println("   ├── Iterazione virtuale #" + iteration + " | Stato pre-corpo: " + this.mem);
+
             SignAbsMem bodyMem = new SignAbsMem(this.mem);
             SignAbsIntp bodyIntp = new SignAbsIntp(bodyMem);
             bodyIntp.visit(ctx.com());
+
             this.mem.lub(bodyMem);
+            System.out.println("   │   └── Stato post-corpo unito (LUB): " + this.mem);
+            iteration++;
 
         } while (!this.mem.equals(oldMem));
 
+        System.out.println("   └── [FIXPOINT] Il ciclo è stabile. Punto fisso raggiunto in " + (iteration - 1) + " iterazioni.");
         return ComValue.INSTANCE;
     }
 
