@@ -59,7 +59,7 @@ public class MainAbstractInterpreter {
 
                 signAnalyzer.visit(mainCtx);
 
-                System.out.println("\n>> STATO STATICO FINALE DELLE VARIABILI:");
+                System.out.println("\n>> STATO FINALE DELLE VARIABILI:");
                 System.out.println("   " + abstractMem);
 
             } catch (IOException e) {
