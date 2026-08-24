@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="feat: SignValue ops domain extension">
-      <change afterPath="$PROJECT_DIR$/examples/test_05.txt" afterDir="false" />
+    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="feat: tests 5, 6 and 7 added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/antlr4/it/univr/pl/Abs.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/antlr4/it/univr/pl/Abs.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/MainAbstractInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/MainAbstractInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/AbsTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/AbsTS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/SignAbsIntp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/visitor/SignAbsIntp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +147,7 @@
       <workItem from="1787250072020" duration="584000" />
       <workItem from="1787305756397" duration="421000" />
       <workItem from="1787306298404" duration="5041000" />
-      <workItem from="1787580114673" duration="1253000" />
+      <workItem from="1787580114673" duration="2411000" />
     </task>
     <task id="LOCAL-00001" summary="fix: main fixed">
       <option name="closed" value="true" />
@@ -178,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787580930119</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: tests 5, 6 and 7 added">
+      <option name="closed" value="true" />
+      <created>1787581545403</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1787581545403</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +211,7 @@
     <MESSAGE value="fix: test_03.txt fixed" />
     <MESSAGE value="feat: SignType domain extension" />
     <MESSAGE value="feat: SignValue ops domain extension" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: SignValue ops domain extension" />
+    <MESSAGE value="feat: tests 5, 6 and 7 added" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: tests 5, 6 and 7 added" />
   </component>
 </project>

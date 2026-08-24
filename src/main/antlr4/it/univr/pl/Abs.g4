@@ -14,6 +14,7 @@ com : TYPE ID (ASSIGN exp)? SC          # decl
 exp : INT                                # intVal
     | BOOL                               # boolVal
     | ID                                 # id
+    | SUB exp                            # unaryMinus
     | LPAR exp RPAR                      # parExp
     | NOT exp                            # not
     | exp op=(MUL | DIV) exp             # mulDiv

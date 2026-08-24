@@ -68,6 +68,12 @@ public class SignAbsIntp extends AbsBaseVisitor<Value> {
     }
 
     @Override
+    public Value visitUnaryMinus(AbsParser.UnaryMinusContext ctx) {
+        SignValue val = (SignValue) visit(ctx.exp());
+        return val.mul(SignValue.NEG);
+    }
+
+    @Override
     public Value visitAddSub(AbsParser.AddSubContext ctx) {
         SignValue left = (SignValue) visit(ctx.exp(0));
         SignValue right = (SignValue) visit(ctx.exp(1));

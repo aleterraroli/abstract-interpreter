@@ -89,6 +89,11 @@ public class AbsTS extends AbsBaseVisitor<Type> {
     }
 
     @Override
+    public SimpleType visitUnaryMinus(AbsParser.UnaryMinusContext ctx) {
+        return visitIntExp(ctx.exp());
+    }
+
+    @Override
     public ComType visitWhile(AbsParser.WhileContext ctx) {
         visitBoolExp(ctx.exp());
 
