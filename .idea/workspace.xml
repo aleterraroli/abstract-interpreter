@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="fix: test_03.txt fixed">
+    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="feat: SignValue ops domain extension">
+      <change afterPath="$PROJECT_DIR$/examples/test_05.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +144,7 @@
       <workItem from="1787250072020" duration="584000" />
       <workItem from="1787305756397" duration="421000" />
       <workItem from="1787306298404" duration="5041000" />
-      <workItem from="1787580114673" duration="377000" />
+      <workItem from="1787580114673" duration="1253000" />
     </task>
     <task id="LOCAL-00001" summary="fix: main fixed">
       <option name="closed" value="true" />
@@ -161,7 +162,23 @@
       <option name="project" value="LOCAL" />
       <updated>1787320506417</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: SignType domain extension">
+      <option name="closed" value="true" />
+      <created>1787580626525</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1787580626525</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: SignValue ops domain extension">
+      <option name="closed" value="true" />
+      <created>1787580930119</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1787580930119</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +198,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix: main fixed" />
     <MESSAGE value="fix: test_03.txt fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: test_03.txt fixed" />
+    <MESSAGE value="feat: SignType domain extension" />
+    <MESSAGE value="feat: SignValue ops domain extension" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: SignValue ops domain extension" />
   </component>
 </project>
