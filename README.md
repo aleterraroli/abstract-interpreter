@@ -1,129 +1,52 @@
-# Abstract Interpreter
-
-A university internship project focused on the theory and implementation of **Static Analysis** and **Abstract Interpretation** techniques.
-
-The framework is developed in Java using **ANTLR4** for syntax recognition. It bypasses complex intermediate representations (like AST or CFG) to evaluate both concrete and abstract semantics directly on the parse tree nodes via the **Visitor Pattern**, combined with a static **Type System**.
+### Abstract Interpreter
+A university internship project focused on the theory and implementation of **Static Analysis** and **Abstract Interpretation** techniques[cite: 2].
+The framework is developed in Java using **ANTLR4** for syntax recognition[cite: 2]. It bypasses complex intermediate representations (like AST or CFG) to evaluate both concrete and abstract semantics directly on the parse tree nodes via the **Visitor Pattern**, combined with a static **Type System**[cite: 2].
 
 ---
 
-## Theoretical Background
+#### Theoretical Background
 
-### Abstract Interpretation
-Introduced by Patrick and Radhia Cousot in 1977, **Abstract Interpretation** is a theory of sound approximation of mathematical structures, primarily applied to the formal semantics of computer programs.
+##### Abstract Interpretation
+Introduced by Patrick and Radhia Cousot in 1977, **Abstract Interpretation** is a theory of sound approximation of mathematical structures, primarily applied to the formal semantics of computer programs[cite: 2].
+Since verifying non-trivial semantic properties of a program is undecidable (**Rice's Theorem**), an abstract interpreter replaces the concrete, infinite domain of execution values with a simplified, finite **Abstract Domain** (structured as a *Poset* or a *Lattice*)[cite: 2].
 
-Since verifying non-trivial semantic properties of a program is undecidable (**Rice's Theorem**), an abstract interpreter replaces the concrete, infinite domain of execution values with a simplified, finite **Abstract Domain** (structured as a *Poset* or a *Lattice*).
+##### The Extended Sign Lattice
+In this project, the concrete domain of integers $\mathbb{Z}$ is abstracted into the **Sign Domain**, structured as a complete lattice[cite: 2]. It has been extended to support more granular and precise analysis[cite: 1]:
+* **$\bot$ (Bottom)**: Represents an uninitialized state, unreachable code, or a static runtime error (e.g., division by zero)[cite: 2].
+* **$-, 0, +$ (Neg, Zero, Pos)**: Represent strict semantic properties of concrete numbers[cite: 2].
+* **$0+, 0-, \neq 0$ (Zero-Plus, Zero-Minus, Not-Zero)**: Extended abstractions to handle ambiguous operations, such as integer division (e.g., $Pos / Pos = 0+$) and speculative conditional joins[cite: 1].
+* **$\top$ (Top)**: Represents total uncertainty[cite: 2]. It is triggered when overlapping execution paths yield discordant signs or mathematical ambiguity[cite: 2].
 
-### The Sign Lattice
-In this project, the concrete domain of integers $\mathbb{Z}$ is abstracted into the **Sign Domain**, structured as a complete lattice:
+##### String Domain via Finite State Automata (FSA)
+To support dynamic string manipulation, the interpreter implements an automata-based abstract semantics (based on *arXiv:1808.07827*)[cite: 1]. 
+* **Regular Languages**: Instead of simple flat lattices, string variables are mapped to the regular language recognized by a **Finite State Automaton (FSA)** using the `dk.brics.automaton` library[cite: 1].
+* **Least Upper Bound (LUB)**: Reconciling string variables in conditional branches corresponds directly to calculating the **Union** of their automata[cite: 1].
+* **Fixpoint & Widening**: Loops involving strings avoid infinite growth by applying a widening operator[cite: 1]. If the automaton's state count exceeds a safe threshold during iteration, it safely relaxes to $\top$ (any string), ensuring rapid convergence[cite: 1].
 
-```text
-       Top (⊤)  <- Non-deterministic / Unknown
-      /   |   \
-  Neg(-) Zero(0) Pos(+)
-      \   |   /
-     Bottom (⊥) <- Unreachable / Error State
-```
-
-* **$\bot$ (Bottom)**: Represents an uninitialized state, unreachable code, or a static runtime error (e.g., division by zero).
-* **$-, 0, +$ (Neg, Zero, Pos)**: Represent strict semantic properties of concrete numbers.
-* **$\top$ (Top)**: Represents total uncertainty. It is triggered when overlapping execution paths yield discordant signs or mathematical ambiguity.
-
-### Soundness & Fixpoint Convergence
-The analyzer computes a **Sound Approximation** of the program state: it is guaranteed to never lie, though it may lose precision to remain decidable.
-
-1. **Conditional Branching (`If-Else`)**: Since the static guard value could evaluate to $\top$, both paths are explored. Their final abstract memories are reconciled at the join-point using the **Least Upper Bound (LUB)** operator:
-
-$$\text{Memory}_{\text{final}} = \text{Memory}_{\text{Then}} \sqcup \text{Memory}_{\text{Else}}$$
-
-2. **Loops (`While`)**: To solve the *Halting Problem* statically, loop analysis executes a **Fixpoint Computation**. The abstract interpreter evaluates the loop body iteratively until the abstract memory reaches a stationary state:
-
-$$M_{i+1} = M_i \sqcup \text{body}(M_i)$$
-
-Since the Sign Lattice has a finite height, convergence is mathematically guaranteed without falling into infinite loops.
+##### Soundness & Fixpoint Convergence
+The analyzer computes a **Sound Approximation** of the program state: it is guaranteed to never lie, though it may lose precision to remain decidable[cite: 2].
+1. **Conditional Branching (**`If-Else`**)**: Since the static guard value could evaluate to $\top$, both paths are explored speculatively[cite: 2]. Their final abstract memories are reconciled at the join-point using the **Least Upper Bound (LUB)** operator[cite: 2]:
+   $$\text{Memory}_{\text{final}} = \text{Memory}_{\text{Then}} \sqcup \text{Memory}_{\text{Else}}$$
+2. **Loops (**`While`**)**: To solve the *Halting Problem* statically, loop analysis executes a **Fixpoint Computation**[cite: 2]. The abstract interpreter evaluates the loop body iteratively until the abstract memory reaches a stationary state[cite: 2]:
+   $$M_{i+1} = M_i \sqcup \text{body}(M_i)$$
+   Convergence is mathematically guaranteed without falling into infinite loops[cite: 2].
 
 ---
 
-## Pipeline Architecture
-
-The framework processes source files through a strict multi-stage pipeline:
-
-```text
-[ Source Code ] 
-       │
-       ▼
- 1. ANTLR4 Parser   ──> Generates Parse Tree Contexts
-       │
-       ▼
- 2. Type System     ──> Validates static types (AbsTS); Aborts on Type Mismatch.
-       │
-       ▼ [If valid]
- 3. Abstract Intp   ──> Evaluates Sign Domains (SignAbsIntp) via Fixpoint Calculation.
-       │
-       ▼
-[ Static Report ]   ──> Outputs the inferred final state of all variables.
-```
+#### Future Implementations: Array Abstraction
+The next milestone for the project involves the integration of Arrays into the language[cite: 1]. Two abstract models are currently under evaluation[cite: 1]:
+* **Smash Abstraction**: Collapses the entire array into a single abstract variable, continuously applying LUB on all inserted elements[cite: 1]. This simplifies implementation but causes the loss of exact positional data[cite: 1].
+* **Index-Sensitive Abstraction**: Maps abstract indices (or intervals) to their respective values, maintaining higher precision[cite: 1]. This approach requires complex mathematical logic, notably **Weak Updates**[cite: 1]. When an accessed index is statically unknown ($\top$), the analyzer must conservatively fuse (LUB) the new data with the existing data to preserve soundness without overwriting valid states[cite: 1].
 
 ---
 
-## Project Structure
+#### Pipeline Architecture
+The framework processes source files through a strict multi-stage pipeline[cite: 2]:
+*(Insert your previous pipeline description here)*
 
-```text
-AbstractInterpreter/
-│
-├── docs/                  # Notes, formal definitions, and lattice diagrams
-├── examples/              # Test suites (.txt files showcasing precise/imprecise/loops states)
-│
-├── src/
-│   ├── main/
-│   │   ├── antlr4/        # ANTLR4 Grammars (.g4) defining the language syntax
-│   │   └── java/
-│   │       └── it/univr/pl/
-│   │           │
-│   │           ├── exception/      # Static compilation and semantic exceptions
-│   │           │
-│   │           ├── type/           # Static Concrete Types (SimpleType) & Abstract Types (SignType)
-│   │           │
-│   │           ├── value/          # Concrete (IntValue) vs Abstract (SignValue) semantic wrappers
-│   │           │
-│   │           ├── visitor/        # The core engines: AbsTS (Type Checker) & SignAbsIntp (Abstract Interpreter)
-│   │           │
-│   │           ├── SignAbsMem.java # Abstract Memory mapping identifiers to SignValues
-│   │           └── MainAbstractInterpreter.java # Main Test Bench runner
-│   │
-│   └── test/
-└── pom.xml                # Maven configuration (ANTLR4 hooks and dependencies)
-```
+#### Project Structure
+*(Insert your previous project structure here)*
 
----
-
-## Getting Started & Test Bench
-
-The project includes an automated test bench that scans the `examples/` directory, prints the source code of each test case, runs the static validation, and computes the signs.
-
-### Prerequisites
-* **JDK 21+** (Optimized for JDK 24)
-* **Maven**
-
-### Compilation
-Compile the project and trigger ANTLR4 parser generation using:
-```bash
-mvn clean compile
-```
-
-### Running the analyzer
-
-Execute the main compiler test bench runner:
-
-```bash
-mvn exec:java -Dexec.mainClass="it.univr.pl.MainAbstractInterpreter"
-```
-
-### Expected output
-
-The test suite demonstrates the foundational guarantees of abstract interpretation:
-
-* **Precise Branches**: If both paths agree on an output sign, the analyzer retains exact precision (e.g., +).
-* **Conservativeness**: Operations like $\text{Pos} - \text{Pos}$ will safely degrade into TOP ($\top$) rather than risking an unsound guess.
-* **Loop Halting**: Loops (such as increments up to a constant boundary) trigger the fixpoint engine, converging stably into TOP in milliseconds instead of looping forever.
-* **Type Guarding**: Well-typed properties are enforced before the sign-transfer functions take over.
-
+#### Getting Started & Test Bench
+The project includes an automated test bench that scans the `examples/` directory, prints the source code of each test case, runs the static validation, and computes the signs[cite: 2].
+*(Insert your previous prerequisites and compilation commands here)*
