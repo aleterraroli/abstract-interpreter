@@ -32,6 +32,7 @@ public class MainAbstractInterpreter {
         for (File file : testFiles) {
             System.out.println("\nAnalisi del file: " + file.getName());
 
+
             try {
                 String programCode = new String(Files.readAllBytes(Paths.get(file.getPath())));
                 System.out.println("CODICE SORGENTE:");
