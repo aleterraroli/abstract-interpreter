@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="fix: rebase">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/type/StringType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="376bd6fc-a5b8-4724-911d-db1015b91820" name="Changes" comment="feat: StringValue added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/univr/pl/StringAbsMem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +17,8 @@
       <list>
         <option value="Exception" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -153,7 +152,7 @@
       <workItem from="1788621416961" duration="275000" />
       <workItem from="1788772378333" duration="5730000" />
       <workItem from="1788864850178" duration="582000" />
-      <workItem from="1788938420217" duration="970000" />
+      <workItem from="1788938420217" duration="1300000" />
     </task>
     <task id="LOCAL-00001" summary="fix: main fixed">
       <option name="closed" value="true" />
@@ -227,7 +226,23 @@
       <option name="project" value="LOCAL" />
       <updated>1788535734111</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat: StringType added">
+      <option name="closed" value="true" />
+      <created>1788939696138</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1788939696138</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: StringValue added">
+      <option name="closed" value="true" />
+      <created>1788939797131</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1788939797131</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +267,8 @@
     <MESSAGE value="feat: tests 5, 6 and 7 added" />
     <MESSAGE value="fix: main err log fixed and grammar neg num added" />
     <MESSAGE value="fix: rebase" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: rebase" />
+    <MESSAGE value="feat: StringType added" />
+    <MESSAGE value="feat: StringValue added" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: StringValue added" />
   </component>
 </project>
